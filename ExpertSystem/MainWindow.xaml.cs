@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExpertSystem.Question;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UniversalHelpers.ConsoleManager;
 
 namespace ExpertSystem
 {
@@ -22,7 +24,9 @@ namespace ExpertSystem
     {
         public MainWindow()
         {
+            ConsoleManager.Show();
             InitializeComponent();
+
         }
     }
 }
