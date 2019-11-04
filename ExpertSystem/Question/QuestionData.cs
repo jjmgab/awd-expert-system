@@ -18,6 +18,11 @@ namespace ExpertSystem.Question
         public string String { get; set; }
 
         /// <summary>
+        /// Id of following question. (e.g. 'If yes, ...')
+        /// </summary>
+        public int? IdNext { get; set; }
+
+        /// <summary>
         /// List of possible answers for that question.
         /// </summary>
         public List<AnswerData> Answers { get; set; }
