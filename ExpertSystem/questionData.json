@@ -1,58 +1,64 @@
 [
 	{
-		"Id": 0,
-		"String": "",
-		"Answers": [
-			{
-				"Id": 0,
-				"String": ""
-			},
-			{
-				"Id": 1,
-				"String": ""
-			}
-		]
-	},
-	{
 		"Id": 1,
-		"String": "",
+		"String": "Are you self-employed?",
 		"Answers": [
-			{
-				"Id": 0,
-				"String": ""
-			},
-			{
-				"Id": 1,
-				"String": ""
-			}
+			{"Id":0, "String":"No"},
+			{"Id":1, "String":"Yes"}
 		]
 	},
 	{
 		"Id": 2,
-		"String": "",
+		"String": "How many employees does your company or organization have?",
 		"Answers": [
-			{
-				"Id": 0,
-				"String": ""
-			},
-			{
-				"Id": 1,
-				"String": ""
-			}
+			{"Id":0, "String":"1-5"},
+			{"Id":1, "String":"6-25"},
+			{"Id":2, "String":"26-100"},
+			{"Id":3, "String":"100-500"},
+			{"Id":4, "String":"500-1000"},
+			{"Id":5, "String":"More than 1000"}
 		]
 	},
 	{
 		"Id": 3,
-		"String": "",
+		"String": "Is your employer primarily a tech company/organization?",
 		"Answers": [
-			{
-				"Id": 0,
-				"String": ""
-			},
-			{
-				"Id": 1,
-				"String": ""
-			}
+			{"Id":0, "String":"No"},
+			{"Id":1, "String":"Yes"}
+		]
+	},
+	{
+		"Id": 4,
+		"String": "Is your primary role within your company related to tech/IT?",
+		"Answers": [
+			{"Id":0, "String":"No"},
+			{"Id":1, "String":"Yes"}
+		]
+	},
+	{
+		"Id": 5,
+		"String": "Do you have previous employers?",
+		"Answers": [
+			{"Id":0, "String":"No"},
+			{"Id":1, "String":"Yes"}
+		]
+	},
+	{
+		"Id": 6,
+		"String": "Do you have a family history of mental illness?",
+		"Answers": [
+			{"Id":0, "String":"No"},
+			{"Id":1, "String":"Yes"},
+			{"Id":2, "String":"I don't know"}
+		]
+	},
+	{
+		"Id": 7,
+		"String": "Have you had a mental health disorder in the past?",
+		"Answers": [
+			{"Id":0, "String":"No"},
+			{"Id":1, "String":"Yes"},
+			{"Id":2, "String":"Maybe"}
 		]
 	}
 ]
