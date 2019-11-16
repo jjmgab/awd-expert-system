@@ -23,14 +23,24 @@ namespace ExpertSystem
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string _dbPath = @"..\..\data\awd-data.sqlite";
+        private string _jsonPath = @"..\..\data\questionData.json";
+
+        private QuestionDataLoader _loader;
+
         public MainWindow()
         {
             ConsoleManager.Show();
             InitializeComponent();
 
+            _loader = QuestionDataLoader.Instance;
+            _loader.Initialize(_jsonPath);
+
+            Console.WriteLine(_loader.GetQuestionDataById(1)?.String);
+
             SQLiteConnectionStringBuilder builder = new SQLiteConnectionStringBuilder()
             {
-                DataSource = @"..\..\data\awd-data.sqlite"
+                DataSource = _dbPath
             };
 
             using (SQLiteConnection conn = new SQLiteConnection(builder.ConnectionString).OpenAndReturn())

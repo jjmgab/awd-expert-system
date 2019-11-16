@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System;
 
 namespace ExpertSystem.Question
 {
@@ -16,31 +17,66 @@ namespace ExpertSystem.Question
         private static QuestionDataLoader _instance = null;
 
         /// <summary>
-        /// Path to JSON with data.
-        /// TODO: change it somehow.
+        /// List of question data.
         /// </summary>
-        private static string _dataPath = @"../../questionData.json";
-
+        private List<QuestionData> _questionData;
         /// <summary>
         /// List of question data.
         /// </summary>
-        public List<QuestionData> QuestionData { get; }
+        public List<QuestionData> QuestionData => _questionData;
 
         /// <summary>
         /// Array of question ids.
         /// </summary>
-        public int[] QuestionIds { get; }
+        private int[] _questionIds;
+        /// <summary>
+        /// Array of question ids.
+        /// </summary>
+        public int[] QuestionIds => _questionIds;
+
+        /// <summary>
+        /// Flag indicating if the loader was already initialized.
+        /// </summary>
+        private bool _isInitialized = false;
+        /// <summary>
+        /// Flag indicating if the loader was already initialized.
+        /// </summary>
+        public bool IsInitialized => _isInitialized;
 
         /// <summary>
         /// Private constructor.
+        /// </summary>
+        private QuestionDataLoader() { }
+
+        /// <summary>
         /// Reads and parses the JSON.
         /// </summary>
-        private QuestionDataLoader()
+        /// <param name="dataSource"></param>
+        /// <returns></returns>
+        public bool Initialize(string dataSource)
         {
-            string json = File.ReadAllText(_dataPath);
-            QuestionData = JsonConvert.DeserializeObject<List<QuestionData>>(json);
-            QuestionIds = (from question in QuestionData
-                           select question.Id).ToArray();
+            if (!_isInitialized)
+            {
+                string json = File.ReadAllText(dataSource);
+                _instance._questionData = JsonConvert.DeserializeObject<List<QuestionData>>(json);
+                _instance._questionIds = (from question in _instance._questionData
+                                          select question.Id).ToArray();
+
+                _isInitialized = true;
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Resets loader state to post-constructor.
+        /// </summary>
+        public void ResetState()
+        {
+            _isInitialized = false;
+            _instance._questionIds = null;
+            _instance._questionData = null;
+
         }
 
         /// <summary>
@@ -65,9 +101,23 @@ namespace ExpertSystem.Question
         /// <returns>Question with corresponding id</returns>
         public QuestionData GetQuestionDataById(int id)
         {
-            return (from question in QuestionData
+            PedanticCheck();
+
+            return (from question in _instance.QuestionData
                     where question.Id == id
                     select question).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Checks for validity of loader current state.
+        /// Throws InvalidOperationException if invalid.
+        /// </summary>
+        private void PedanticCheck()
+        {
+            if (!_isInitialized)
+            {
+                throw new InvalidOperationException("Loader not yet initialized.");
+            }
         }
     }
 }
