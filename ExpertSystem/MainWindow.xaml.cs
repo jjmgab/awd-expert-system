@@ -1,4 +1,5 @@
 ﻿using ExpertSystem.Question;
+using ExpertSystem.Services;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -27,6 +28,7 @@ namespace ExpertSystem
         private string _jsonPath = @"..\..\data\questionData.json";
 
         private QuestionDataLoader _loader;
+        private DbHandler _handler;
 
         public MainWindow()
         {
@@ -34,26 +36,20 @@ namespace ExpertSystem
             InitializeComponent();
 
             _loader = QuestionDataLoader.Instance;
-            _loader.Initialize(_jsonPath);
+            _loader.Initialize(new object[] { _jsonPath });
+
+            _handler = DbHandler.Instance;
+            _handler.Initialize(new object[] { _dbPath });
 
             Console.WriteLine(_loader.GetQuestionDataById(1)?.String);
 
-            SQLiteConnectionStringBuilder builder = new SQLiteConnectionStringBuilder()
+            SQLiteDataReader reader = _handler.ExecuteQuery("SELECT * FROM DATA WHERE ID < 15");
+            while (reader.Read())
             {
-                DataSource = _dbPath
-            };
-
-            using (SQLiteConnection conn = new SQLiteConnection(builder.ConnectionString).OpenAndReturn())
-            {
-                SQLiteCommand command = new SQLiteCommand("SELECT * FROM DATA WHERE ID<15", conn);
-                SQLiteDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    Console.WriteLine(reader.GetValue(0));
-                }
-
-                conn.Close();
+                Console.WriteLine(reader.GetValue(0));
             }
+
+            _handler.Close();
         }
     }
 }

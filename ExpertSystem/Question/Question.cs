@@ -1,4 +1,6 @@
-﻿namespace ExpertSystem.Question
+﻿using ExpertSystem.Services;
+
+namespace ExpertSystem.Question
 {
     /// <summary>
     /// Class representing question data and user answer to it.

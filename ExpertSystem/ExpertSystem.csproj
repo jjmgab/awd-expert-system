@@ -77,11 +77,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Base\SingletonBase.cs" />
     <Compile Include="Helpers\ConsoleManager.cs" />
     <Compile Include="Question\AnswerData.cs" />
     <Compile Include="Question\Question.cs" />
     <Compile Include="Question\QuestionData.cs" />
-    <Compile Include="Question\QuestionDataLoader.cs" />
+    <Compile Include="Services\DbHandler.cs" />
+    <Compile Include="Services\QuestionDataLoader.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
