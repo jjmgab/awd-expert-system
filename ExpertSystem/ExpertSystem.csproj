@@ -79,9 +79,12 @@
     </ApplicationDefinition>
     <Compile Include="Base\SingletonBase.cs" />
     <Compile Include="Helpers\ConsoleManager.cs" />
-    <Compile Include="Question\AnswerData.cs" />
-    <Compile Include="Question\Question.cs" />
-    <Compile Include="Question\QuestionData.cs" />
+    <Compile Include="QuestionPage.xaml.cs">
+      <DependentUpon>QuestionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Questions\AnswerData.cs" />
+    <Compile Include="Questions\Question.cs" />
+    <Compile Include="Questions\QuestionData.cs" />
     <Compile Include="Services\DbHandler.cs" />
     <Compile Include="Services\QuestionDataLoader.cs" />
     <Page Include="MainWindow.xaml">
@@ -96,6 +99,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="QuestionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

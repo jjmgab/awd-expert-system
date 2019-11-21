@@ -1,5 +1,5 @@
 ﻿using ExpertSystem.Base;
-using ExpertSystem.Question;
+using ExpertSystem.Questions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

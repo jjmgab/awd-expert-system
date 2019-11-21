@@ -1,11 +1,12 @@
 ﻿using ExpertSystem.Services;
+using System.Collections.Generic;
 
-namespace ExpertSystem.Question
+namespace ExpertSystem.Questions
 {
     /// <summary>
     /// Class representing question data and user answer to it.
     /// </summary>
-    class Question
+    public class Question
     {
         /// <summary>
         /// Question id.
@@ -13,9 +14,9 @@ namespace ExpertSystem.Question
         public int QuestionId { get; set; }
 
         /// <summary>
-        /// Chosen answer id.
+        /// Chosen answer ids.
         /// </summary>
-        public int AnswerId { get; }
+        public List<int> AnswerIds { get; }
 
         /// <summary>
         /// Question data - strings and possible answers.
@@ -30,7 +31,7 @@ namespace ExpertSystem.Question
         {
             QuestionId = id;
             Data = QuestionDataLoader.Instance.GetQuestionDataById(QuestionId);
-            AnswerId = -1; // -1 when not answered
+            AnswerIds = new List<int>(); // -1 when not answered
         }
     }
 }

@@ -2,6 +2,7 @@
 	{
 		"Id": 1,
 		"String": "Are you self-employed?",
+		"IsSingleAnswer": "true",
 		"Answers": [
 			{"Id":0, "String":"No"},
 			{"Id":1, "String":"Yes"}
@@ -10,6 +11,7 @@
 	{
 		"Id": 2,
 		"String": "How many employees does your company or organization have?",
+		"IsSingleAnswer": "true",
 		"Answers": [
 			{"Id":0, "String":"1-5"},
 			{"Id":1, "String":"6-25"},
@@ -22,6 +24,7 @@
 	{
 		"Id": 3,
 		"String": "Is your employer primarily a tech company/organization?",
+		"IsSingleAnswer": "true",
 		"Answers": [
 			{"Id":0, "String":"No"},
 			{"Id":1, "String":"Yes"}
@@ -30,6 +33,7 @@
 	{
 		"Id": 4,
 		"String": "Is your primary role within your company related to tech/IT?",
+		"IsSingleAnswer": "true",
 		"Answers": [
 			{"Id":0, "String":"No"},
 			{"Id":1, "String":"Yes"}
@@ -38,6 +42,7 @@
 	{
 		"Id": 5,
 		"String": "Do you have previous employers?",
+		"IsSingleAnswer": "true",
 		"Answers": [
 			{"Id":0, "String":"No"},
 			{"Id":1, "String":"Yes"}
@@ -46,6 +51,7 @@
 	{
 		"Id": 6,
 		"String": "Do you have a family history of mental illness?",
+		"IsSingleAnswer": "true",
 		"Answers": [
 			{"Id":0, "String":"No"},
 			{"Id":1, "String":"Yes"},
@@ -55,6 +61,7 @@
 	{
 		"Id": 7,
 		"String": "Have you had a mental health disorder in the past?",
+		"IsSingleAnswer": "true",
 		"Answers": [
 			{"Id":0, "String":"No"},
 			{"Id":1, "String":"Yes"},

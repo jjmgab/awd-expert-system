@@ -1,4 +1,4 @@
-﻿namespace ExpertSystem.Question
+﻿namespace ExpertSystem.Questions
 {
     /// <summary>
     /// Class defining answer data (answer string and the id,

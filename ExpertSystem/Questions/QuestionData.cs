@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ExpertSystem.Question
+namespace ExpertSystem.Questions
 {
     /// <summary>
     /// Class defining question data.
@@ -16,6 +16,11 @@ namespace ExpertSystem.Question
         /// Question string.
         /// </summary>
         public string String { get; set; }
+
+        /// <summary>
+        /// Question string.
+        /// </summary>
+        public bool IsSingleAnswer { get; set; }
 
         /// <summary>
         /// Id of following question. (e.g. 'If yes, ...')
