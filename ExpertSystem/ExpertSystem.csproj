@@ -78,15 +78,36 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Base\SingletonBase.cs" />
+    <Compile Include="Enums\LogType.cs" />
+    <Compile Include="ExpertSystem.cs" />
     <Compile Include="Helpers\ConsoleManager.cs" />
+    <Compile Include="Helpers\LogEventArgs.cs" />
+    <Compile Include="Helpers\Logger.cs" />
+    <Compile Include="LoggerWindow.xaml.cs">
+      <DependentUpon>LoggerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="QuestionPage.xaml.cs">
       <DependentUpon>QuestionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Questions\AnswerData.cs" />
     <Compile Include="Questions\Question.cs" />
     <Compile Include="Questions\QuestionData.cs" />
+    <Compile Include="ResultsPage.xaml.cs">
+      <DependentUpon>ResultsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\DbHandler.cs" />
     <Compile Include="Services\QuestionDataLoader.cs" />
+    <Page Include="LoggerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -100,6 +121,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="QuestionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ResultsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

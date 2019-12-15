@@ -68,4 +68,153 @@
 			{"Id":2, "String":"Maybe"}
 		]
 	}
+	,
+	{
+		"Id": 8,
+		"String": "Do you currently have a mental health disorder?",
+		"IsSingleAnswer": "true",
+		"Answers": [
+			{"Id":0, "String":"No"},
+			{"Id":1, "String":"Yes"},
+			{"Id":2, "String":"Maybe"}
+		]
+	},
+	{
+		"Id": 9,
+		"String": "[TO_DELETE]",
+		"IsSingleAnswer": "true",
+		"Answers": [
+			{"Id":0, "String":"Attention Deficit Disorder (w/o Hyperactivity)"},
+			{"Id":1, "String":"Addictive Disorder"},
+			{"Id":2, "String":"Asperger Syndrome"},
+			{"Id":3, "String":"Attention Deficit Hyperactivity Disorder"},
+			{"Id":4, "String":"Anxiety Disorder (Generalized, Social, Phobia, etc)"},
+			{"Id":5, "String":"Autism"},
+			{"Id":6, "String":"Burnout"},
+			{"Id":7, "String":"Depersonalisation"},
+			{"Id":8, "String":"Dissociative Disorder"},
+			{"Id":9, "String":"Mood Disorder (Depression, Bipolar Disorder, etc)"},
+			{"Id":10, "String":"Eating Disorder (Anorexia, Bulimia, etc)"},
+			{"Id":11, "String":"Gender Identity Disorder"},
+			{"Id":12, "String":"Obsessive-Compulsive Disorder"},
+			{"Id":13, "String":"Personality Disorder (Borderline, Antisocial, Paranoid, etc)"},
+			{"Id":14, "String":"Post-traumatic Stress Disorder"},
+			{"Id":15, "String":"Psychotic Disorder (Schizophrenia, Schizoaffective, etc)"},
+			{"Id":16, "String":"Stress Response Syndromes"},
+			{"Id":17, "String":"Substance Use Disorder"},
+			{"Id":18, "String":"Suicidal Ideation"},
+			{"Id":19, "String":"Tinnitus"},
+			{"Id":20, "String":"Intimate Disorder"},
+			{"Id":21, "String":"Pervasive Developmental Disorder (Not Otherwise Specified)"},
+			{"Id":22, "String":"Schizotypal Personality Disorder"},
+			{"Id":23, "String":"Seasonal Affective Disorder"},
+			{"Id":24, "String":"Sexual addiction"},
+			{"Id":25, "String":"Sleeping Disorder"}
+		]
+	},
+	{
+		"Id": 11,
+		"String": "Have you been diagnosed with a mental health condition by a medical professional?",
+		"IsSingleAnswer": "true",
+		"Answers": [
+			{"Id":0, "String":"No"},
+			{"Id":1, "String":"Yes"}
+		]
+	},
+	{
+		"Id": 13,
+		"String": "Have you ever sought treatment for a mental health issue from a mental health professional?",
+		"IsSingleAnswer": "true",
+		"Answers": [
+			{"Id":0, "String":"No"},
+			{"Id":1, "String":"Yes"}
+		]
+	},
+	{
+		"Id": 15,
+		"String": "What is your gender?",
+		"IsSingleAnswer": "true",
+		"Answers": [
+			{"Id":0, "String":"Male"},
+			{"Id":1, "String":"Female"},
+			{"Id":2, "String":"Trans/Other"}
+		]
+	},
+	{
+		"Id": 16,
+		"String": "What age group do you belong to?",
+		"IsSingleAnswer": "true",
+		"Answers": [
+			{"Id":0, "String":"Under 20"},
+			{"Id":1, "String":"20-25"},
+			{"Id":2, "String":"26-30"},
+			{"Id":3, "String":"31-35"},
+			{"Id":4, "String":"36-40"},
+			{"Id":5, "String":"41-45"},
+			{"Id":6, "String":"46-50"},
+			{"Id":7, "String":"51-55"},
+			{"Id":8, "String":"56-60"},
+			{"Id":9, "String":"61-65"},
+			{"Id":10, "String":"Over 65"}
+		]
+	},
+	{
+		"Id": 17,
+		"String": "What region do you live in?",
+		"IsSingleAnswer": "true",
+		"Answers": [
+			{"Id":0, "String":"Europe"},
+			{"Id":1, "String":"North America"},
+			{"Id":2, "String":"South America"},
+			{"Id":3, "String":"Africa"},
+			{"Id":4, "String":"Australia"},
+			{"Id":5, "String":"Asia (Middle East)"},
+			{"Id":6, "String":"Asia"},
+			{"Id":7, "String":"Other"}
+		]
+	},
+	{
+		"Id": 19,
+		"String": "What region do you work in?",
+		"IsSingleAnswer": "true",
+		"Answers": [
+			{"Id":0, "String":"Europe"},
+			{"Id":1, "String":"North America"},
+			{"Id":2, "String":"South America"},
+			{"Id":3, "String":"Africa"},
+			{"Id":4, "String":"Australia"},
+			{"Id":5, "String":"Asia (Middle East)"},
+			{"Id":6, "String":"Asia"},
+			{"Id":7, "String":"Other"}
+		]
+	},
+	{
+		"Id": 21,
+		"String": "Which of the following best describes your work position?",
+		"IsSingleAnswer": "false",
+		"Answers": [
+			{"Id":0, "String":"Back-end Developer"},
+			{"Id":1, "String":"Front-end Developer"},
+			{"Id":2, "String":"Supervisor/Team Lead"},
+			{"Id":3, "String":"Executive Leadership"},
+			{"Id":4, "String":"Dev Evangelist/Advocate"},
+			{"Id":5, "String":"DevOps/SysAdmin"},
+			{"Id":6, "String":"Support"},
+			{"Id":7, "String":"Other"},
+			{"Id":8, "String":"One-person shop"},
+			{"Id":9, "String":"Designer"},
+			{"Id":10, "String":"Sales"},
+			{"Id":11, "String":"HR"}
+		]
+	},
+	{
+		"Id": 22,
+		"String": "Do you work remotely?",
+		"IsSingleAnswer": "true",
+		"Answers": [
+			{"Id":0, "String":"Sometimes"},
+			{"Id":1, "String":"Never"},
+			{"Id":2, "String":"Always"}
+		]
+	}
 ]

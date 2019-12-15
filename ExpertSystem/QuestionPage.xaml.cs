@@ -1,20 +1,12 @@
-﻿using ExpertSystem.Questions;
-using ExpertSystem.Services;
+﻿using ExpertSystem.Helpers;
+using ExpertSystem.Questions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ExpertSystem
 {
@@ -34,10 +26,14 @@ namespace ExpertSystem
             InitializeComponent();
             _question = question;
 
+            Logger.Info($"QuestionPage: {_question.QuestionId} (\"{_question.Data.String}\")");
+
             this.Title = $"Question {_question.QuestionId}";
             answerStringSet = new HashSet<string>();
 
-            labelQuestion.Content = _question.Data.String;
+            labelQuestion.Text = _question.Data.String;
+
+            Logger.Info($"QuestionPage: IsSingleAnswer = {_question.Data.IsSingleAnswer.ToString()}");
 
             foreach (AnswerData answer in _question.Data.Answers)
             {
@@ -88,17 +84,17 @@ namespace ExpertSystem
         private void ButtonAccept_Click(object sender, RoutedEventArgs e)
         {
             List<int> answerIds = new List<int>();
-            //StringBuilder builder = new StringBuilder();
+            StringBuilder builder = new StringBuilder();
             answerStringSet.ToList().ForEach(x => {
-                //builder.AppendLine(x);
+                builder.Append($"{x} ");
                 answerIds.Add(_question.Data.Answers
                     .Where(a => a.String == x)
                     .Select(a => a.Id)
                     .FirstOrDefault());
             });
             _question.AnswerIds.AddRange(answerIds);
-            //builder.AppendLine($"Id count: {_question.AnswerIds.Count}");
-            //MessageBox.Show(_question.AnswerIds.Count.ToString());
+
+            Logger.Info($"QuestionPage: Accepted: answers: {builder.ToString()} (count: {_question.AnswerIds.Count}).");
 
             (sender as Button).IsEnabled = false;
             OnNext?.Invoke();

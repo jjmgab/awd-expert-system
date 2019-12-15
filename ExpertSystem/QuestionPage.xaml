@@ -20,7 +20,9 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Button x:Name="buttonAccept" Content="OK" Grid.Column="1" Margin="440,10,10,10" Grid.Row="2" Click="ButtonAccept_Click"/>
-        <Label x:Name="labelQuestion" Content="Label" Grid.Column="1" Margin="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20"/>
+        <Viewbox Grid.Column="1">
+            <TextBlock x:Name="labelQuestion" Margin="10" FontSize="14" Width="560" Height="39" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"></TextBlock>
+        </Viewbox>
         <StackPanel x:Name="stackAnswers" Grid.Column="1" Margin="10" Grid.Row="1" CanVerticallyScroll="True"/>
 
     </Grid>

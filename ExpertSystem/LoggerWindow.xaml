@@ -1,8 +1,13 @@
-﻿<NavigationWindow x:Class="ExpertSystem.MainWindow"
+﻿<Window x:Class="ExpertSystem.LoggerWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExpertSystem"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" MinHeight="450" MinWidth="800" Closing="NavigationWindow_Closing"/>
+        Title="LoggerWindow" Height="397" Width="534">
+    <Grid>
+        <TextBox x:Name="textBox" TextWrapping="Wrap" IsReadOnly="True" IsUndoEnabled="False" Margin="10" VerticalScrollBarVisibility="Visible"/>
+
+    </Grid>
+</Window>

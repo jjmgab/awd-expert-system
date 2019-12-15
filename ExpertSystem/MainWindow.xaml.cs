@@ -1,21 +1,11 @@
-﻿using ExpertSystem.Questions;
+﻿using ExpertSystem.Algorithm;
+using ExpertSystem.Helpers;
+using ExpertSystem.Questions;
 using ExpertSystem.Services;
-using System;
 using System.Collections.Generic;
-using System.Data.SQLite;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
-using UniversalHelpers.ConsoleManager;
 
 namespace ExpertSystem
 {
@@ -24,66 +14,111 @@ namespace ExpertSystem
     /// </summary>
     public partial class MainWindow : NavigationWindow
     {
+        private LoggerWindow _loggerWindow = new LoggerWindow();
+
         private string _dbPath = @"..\..\data\awd-data.sqlite";
         private string _jsonPath = @"..\..\data\questionData.json";
 
         private QuestionDataLoader _loader;
         private DbHandler _handler;
+        private ExpertSystemAlgorithm _system;
 
-        private Stack<int> stackId;
-        private List<Question> questions = new List<Question>();
+        private MainPage _mainPage;
+
+        private Stack<int> _stackId;
+        private List<Question> _questions = new List<Question>();
 
         public MainWindow()
         {
-            ConsoleManager.Show();
             InitializeComponent();
 
-            stackId = new Stack<int>();
+            Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
 
+            _loggerWindow.Show();
+
+            _stackId = new Stack<int>();
+
+            Logger.Info($"Initializing QuestionDataLoader ({_jsonPath}).");
             _loader = QuestionDataLoader.Instance;
             _loader.Initialize(new object[] { _jsonPath });
 
-            //_handler = DbHandler.Instance;
-            //_handler.Initialize(new object[] { _dbPath });
+            Logger.Info($"Initializing DbHandler ({_dbPath}).");
+            _handler = DbHandler.Instance;
+            _handler.Initialize(new object[] { _dbPath });
 
-            _loader.QuestionIds.ToList().ForEach((x) => { stackId.Push(x); });
-            //stackId.Push(2);
+            _loader.QuestionIds.ToList().ForEach((x) => { _stackId.Push(x); });
 
-            Page_OnNext();
+            Logger.Info("Adding questions.");
+            List<Question> questions = new List<Question>();
+            _loader.QuestionIds.ToList().ForEach(i => questions.Add(new Question(i)));
+            Logger.Info($"{questions.Count} questions added.");
 
-            //SQLiteDataReader reader = _handler.ExecuteQuery("SELECT * FROM DATA WHERE ID < 15");
-            //while (reader.Read())
-            //{
-            //    Console.WriteLine(reader.GetValue(0));
-            //}
+            Logger.Info("Initializing ExpertSystemAlgorithm.");
+            _system = new ExpertSystemAlgorithm(questions);
 
-            //_handler.Close();
+
+            _mainPage = new MainPage(_system.AvailableQuestionsCount);
+            _mainPage.OnNext += MainPage_Started;
+            _mainPage.OnNext += Page_OnNext;
+
+            Navigate(_mainPage);
+        }
+
+        private void MainPage_Started()
+        {
+            _system.QuestionCountMax = _mainPage.SystemSettings.QuestionsToAskCount;
+            Logger.Info($"Questions to ask count changed to {_mainPage.SystemSettings.QuestionsToAskCount}.");
         }
 
         private void Page_OnNext()
         {
-            if (stackId.Count > 0)
+            if (_system.HasAvailable)
             {
-                Question question = new Question(stackId.Pop());
-                questions.Add(question);
-                QuestionPage page = new QuestionPage(question);
-                page.OnNext += Page_OnNext;
-                Navigate(page);
+                Logger.Info("Page_OnNext: There are available questions.");
+                Question question = _system.PickNext();
+
+                if (question != null)
+                {
+                    _questions.Add(question);
+                    QuestionPage page = new QuestionPage(question);
+                    page.OnNext += Page_OnNext;
+                    Navigate(page);
+                }
+                else
+                {
+                    NoMoreQuestions();
+                }
             }
             else
             {
-                StringBuilder builder = new StringBuilder();
-                questions.ForEach(q =>
-                {
-                    string ans = "";
-                    q.AnswerIds.ForEach(a =>
-                    {
-                        ans += a.ToString() + " ";
-                    });
-                    builder.AppendLine($"Q{q.QuestionId}: {ans}");
-                });
-                MessageBox.Show(builder.ToString());
+                NoMoreQuestions();
             }
+        }
+
+        private void NoMoreQuestions()
+        {
+            Logger.Info("Page_OnNext: There are no available questions.");
+            Logger.Info("--- Answer summary:");
+
+            _questions.ForEach(q =>
+            {
+                Logger.Info($"Q{q.QuestionId} ({q.Data.String})");
+                q.AnswerIds.ForEach(a =>
+                {
+                    Logger.Info($"A{a} ({q.Data.Answers.Where(ans => ans.Id == a).FirstOrDefault()?.String})");
+                });
+            });
+
+            Logger.Info("Showing the results page.");
+            ResultsPage page = new ResultsPage(_system);
+            Navigate(page);
+
+            _handler.Close();
+        }
+
+        private void NavigationWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
