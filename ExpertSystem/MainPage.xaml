@@ -35,11 +35,11 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="154*"/>
-                        <ColumnDefinition Width="347*"/>
+                        <ColumnDefinition Width="68*"/>
+                        <ColumnDefinition Width="99*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="textBoxQNumber" Grid.Column="1" Height="32" Margin="10,10,10,0" Text="5" TextWrapping="Wrap" VerticalAlignment="Top" PreviewTextInput="NumberValidationTextBox"/>
-                    <Label x:Name="labelQNumber" Content="Label" Margin="10"/>
+                    <TextBox x:Name="textBoxQNumber" Grid.Column="1" Height="24" Margin="10,10,10,0" Text="5" TextWrapping="Wrap" VerticalAlignment="Top" PreviewTextInput="NumberValidationTextBox" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
+                    <Label x:Name="labelQNumber" Content="Max number of questions" Margin="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Padding="0,0,5,0" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
                 </Grid>
             </GroupBox>
         </Grid>
